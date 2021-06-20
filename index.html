@@ -12,17 +12,7 @@
   <div id="sampleName" style="display: none">
     <%= htmlWebpackPlugin.options.title %>
   </div>
-  <script>
-    var sampleName = window.location.search.substring(1);
-    sampleName = sampleName.replace(/\W/g, '');
-    if (sampleName.length <= 0) {
-      sampleName = document.getElementById('sampleName').innerText.trim();
-    }
-    document.title = "sounds-some-sounds demo - " + sampleName;
-    var script = document.createElement('script');
-    script.src = sampleName + '.js';
-    document.body.appendChild(script);
-  </script>
+  <script type="module" src="./rects.js"></script>
   <p>[Mouse/Touch]: move</p>
   <p>
     <button id="change">change</button> random seed:

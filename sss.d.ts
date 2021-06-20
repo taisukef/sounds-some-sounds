@@ -1,4 +1,5 @@
-export declare let playInterval: number;
+//export declare let playInterval: number;
+export declare function setPlayInterval(n: number): void;
 export declare const Preset: any;
 export declare function init(_seed?: number, tempo?: number, fps?: number): void;
 export declare function setSeed(_seed?: number): void;

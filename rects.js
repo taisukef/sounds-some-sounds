@@ -1,8 +1,8 @@
-import * as sss from "../index";
+import * as sss from "./sss.js";
 
 const size = 480;
-let canvas: HTMLCanvasElement;
-let context: CanvasRenderingContext2D;
+let canvas; //: HTMLCanvasElement;
+let context; // : CanvasRenderingContext2D;
 let cursorPos = { x: 0, y: 0 };
 
 window.onload = () => {
@@ -38,7 +38,7 @@ window.onload = () => {
     e => {
       e.preventDefault();
       onCursorUp();
-      (e.target as any).click();
+      e.target.click();
     },
     { passive: false }
   );
@@ -53,7 +53,7 @@ const shipY = 320;
 const shipSize = 36;
 let items = [];
 
-function onCursorDown(x: number, y: number) {
+function onCursorDown(x, y) {
   // play an empty sound in a touch event handler for iOS
   sss.playEmpty();
   if (!isInGame) {
@@ -66,7 +66,7 @@ function onCursorDown(x: number, y: number) {
   onCursorMove(x, y);
 }
 
-function onCursorMove(x: number, y: number) {
+function onCursorMove(x, y) {
   cursorPos.x = x - canvas.offsetLeft;
   cursorPos.y = y - canvas.offsetTop;
 }
@@ -142,14 +142,14 @@ function update() {
   ticks++;
 }
 
-function constrain(v: number, min: number, max: number) {
+function constrain(v, min, max) {
   return Math.max(min, Math.min(v, max));
 }
 
 function initSeedUi() {
-  const change = <HTMLButtonElement>document.getElementById("change");
-  const seed = <HTMLInputElement>document.getElementById("seed");
-  const set = <HTMLButtonElement>document.getElementById("set");
+  const change = document.getElementById("change");
+  const seed = document.getElementById("seed");
+  const set = document.getElementById("set");
   change.onclick = () => {
     seed.value = Math.floor(Math.random() * 9999999).toString();
     reset();
